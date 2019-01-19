@@ -22,7 +22,7 @@ bot.onText(/\/start/, (msg, match) => {
     reply_markup: {
       keyboard:[
         [
-          {text: 'Расписание'},
+          {text: 'Узнать расписание'},
           {text: 'О клубе'},
           {text: 'Задать вопрос'},
           {text: 'Заказать звонок'}

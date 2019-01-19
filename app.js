@@ -33,7 +33,7 @@ bot.onText(/\/start/, (msg, match) => {
   });
 });
 
-bot.onText(/Расписание/, (msg, match) => {
+bot.onText(/Узнать расписание/, (msg, match) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, 'АКТУАЛЬНОЕ РАСПИСАНИЕ');
 });

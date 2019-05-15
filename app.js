@@ -1,58 +1,67 @@
+require('dotenv').config();
+
+const express    = require('express');
+const bodyParser = require('body-parser');
+const expressHbs = require("express-handlebars");
+// const favicon = require('express-favicon');
+
 const TelegramBot = require('node-telegram-bot-api');
-
-const token = '571499408:AAEtxaMQ6RqbdpYK80SSa_T0vYNvLASLQ3g';
-
-const bot = new TelegramBot(token, {polling: true});
-
-let users = [];
+const bot = new TelegramBot(process.env.TOKEN, {polling: true});
 
 
-bot.onText(/\/start/, (msg, match) => {
+require(__dirname+'/telegram-bot/bot')(bot, process.env.TOKEN);
 
-  const chatId = msg.chat.id;
-  
-  users[chatId]= {
-    'uid': msg.from.id,
-    'chatId': msg.chat.id,
-    'ufirstname': msg.chat.first_name,
-    'ulastname': msg.chat.last_name
-  };
+const app = express();
 
-  bot.sendMessage(chatId, 'Главное меню', {
-    reply_markup: {
-      keyboard:[
-        [
-          {text: 'Узнать расписание'},
-          {text: 'О клубе'},
-          {text: 'Задать вопрос'},
-          {text: 'Заказать звонок'}
-        ]
-      ],
-      resize_keyboard: true
+// app.use(favicon(__dirname + '/public/img/favicon.ico'));
+
+// For Handlebars
+app.engine("hbs", expressHbs(
+    {
+        layoutsDir: "views/layouts", 
+        defaultLayout: "layout",
+        extname: "hbs",
+        helpers: {
+            procent: function(array, index){
+                const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                var sum = array.reduce(reducer);
+                return ((array[index]*100)/sum).toFixed(2);
+            },
+            ifCond: function(v1, v2, options) {
+                if(v1 == v2) {
+                  return options.fn(this);
+                }
+                return options.inverse(this);
+            },
+            not_equals: function(v1, v2, options) {
+                if(v1 != v2) {
+                  return options.fn(this);
+                }
+                return options.inverse(this);
+            },
+            count_votes: function(array, index){
+                return array[index];
+            },
+        }
     }
-  });
+))
+app.set("view engine", "hbs");
+
+
+app.use('/', express.static(__dirname+'/public/'));
+
+//For BodyParser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+
+require(__dirname+'/router')(app, bot);
+
+
+
+
+app.listen(8080, function(){
+    console.log('Express server listening on port 8080');
 });
-
-bot.onText(/Узнать расписание/, (msg, match) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'АКТУАЛЬНОЕ РАСПИСАНИЕ');
-});
-
-bot.onText(/О клубе/, (msg, match) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Инфа о клубе');
-});
-
-bot.onText(/Задать вопрос/, (msg, match) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Задать вопрос!');
-});
-
-
-
-// setInterval(function(){
-//   users.forEach(function callback(value, index, users) {
-//     bot.sendMessage(users[index]['chatId'], JSON.stringify(value));
-//   });
-// },5000);
-

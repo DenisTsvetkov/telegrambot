@@ -1,23 +1,31 @@
 {
-  "name": "telegrambot",
+  "name": "telegrambot-admin-panel",
   "version": "1.0.0",
-  "description": "Создание телеграм бота на NodeJS",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": "10.14.1"
-  },
-  "keywords": [
-    "telegram",
-    "bot"
-  ],
   "author": "Denis Tsvetkov",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.0.12",
+    "hbs": "^4.0.1",
+    "http": "^0.0.0",
+    "https": "^1.0.0",
     "node-telegram-bot-api": "^0.30.0",
-    "nodemon": "^1.18.9"
+    "pg-promise": "^8.5.5"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.4.2",
+    "gulp-notify": "^3.2.0",
+    "gulp-sass": "^4.0.2"
   }
 }

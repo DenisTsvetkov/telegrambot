@@ -1,0 +1,51 @@
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="title-1 m-b-25">Текстовая информация</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Текстовая информация</strong> отображаемая в телеграм-боте
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="textarea-input" class=" form-control-label">Расписание</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{messages.schedule}}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="textarea-input" class=" form-control-label">О клубе</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{messages.about}}</textarea>
+                                    </div>
+                                </div>
+                                
+                                {{!-- <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Сохранить
+                                </button> --}}
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Сохранить
+                                </button>
+                            {{!-- <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Сбросить
+                            </button> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

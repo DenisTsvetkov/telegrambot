@@ -1,0 +1,15 @@
+i.fas, i.far {
+  padding-right: 10px; }
+
+.user-avatar {
+  max-width: 150px;
+  width: 50px;
+  height: 50px;
+  transition: all .3s; }
+  .user-avatar:hover {
+    width: 150px;
+    height: 150px; }
+
+#btn-send-all {
+  font-size: 12px;
+  margin-bottom: 10px; }

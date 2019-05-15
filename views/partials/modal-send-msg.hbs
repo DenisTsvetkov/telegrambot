@@ -1,0 +1,32 @@
+<!-- modal medium -->
+<div class="modal fade" id="modal-send-msg" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Отправить сообщение пользователю в телеграм</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/send-message" method="post" class="form-horizontal">
+                    <input type="hidden" name="chatId" value="" id="chat-id">              
+                    <div class="row form-group">
+                        <div class="col-12 col-md-12">
+                            <label for="textarea-input" class=" form-control-label">Текст сообщения</label>
+                        </div>
+                        <div class="col-12 col-md-12">
+                            <textarea name="msg" id="textarea-input" rows="9" placeholder="Введите текст сообщения..." class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Отправить">
+                </form>
+            </div>
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Отправить</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+<!-- end modal medium -->

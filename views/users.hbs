@@ -1,0 +1,62 @@
+{{>modal-send-msg-all-users}}
+{{>modal-send-msg}}
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="">
+                    <h2 class="title-1 m-b-25">Пользователи</h2>
+                </div>
+                <div class="ml-auto mr-2">
+                    <button type="button" id="btn-send-all" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-send-msg-all-users">Отправить сообщение всем активным</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12"></div>
+                    <div class="table-responsive table--no-card m-b-40">
+                        <table class="table table-borderless table-striped table-earning users-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Имя</th>
+                                    <th>Фамилия</th>
+                                    <th class="text-left">Имя пользователя</th>
+                                    <th>Телефон</th>
+                                    <th>Статус пользователя</th>
+                                    {{!-- <th class="text-right">total</th> --}}
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each users}}
+                                <tr data-id="{{this.id}}">
+                                    <td><img class="user-avatar" src="{{this.avatar}}" alt="{{this.firstname}} {{this.lastname}}"></td>
+                                    <td>{{this.firstname}}</td>
+                                    <td>{{this.lastname}}</td>
+                                    <td class="text-left">{{this.username}}</td>
+                                    <td>{{this.phone}}</td>
+                                    <td class="text-center">
+                                        <label class="switch switch-text switch-success switch-pill">
+                                            <input type="checkbox" class="switch-input" {{#if this.active}}checked{{/if}}>
+                                            <span data-on="On" data-off="Off" class="switch-label"></span>
+                                            <span class="switch-handle"></span>
+                                        </label>
+                                    </td>
+                                    <td class="text-right">
+                                        <button type="button" class="btn btn-primary send-msg-user" data-toggle="modal" data-target="#modal-send-msg">
+                                            <i class="far fa-paper-plane"></i>Отправить сообщение в телеграм
+                                        </button>    
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- END MAIN CONTENT-->
